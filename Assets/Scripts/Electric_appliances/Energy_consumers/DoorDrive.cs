@@ -14,7 +14,7 @@ namespace Electric_appliances.Energy_consumers
         [SerializeField] private Transform door;
         [SerializeField] private ButtonClickReader _buttonClickReader;
         [SerializeField] private float _currentConsumerPerAction;
-        [SerializeField] private ButtonObject _buttonLink;
+        [SerializeField] private ButtonLinker _buttonLink;
 
         private Quaternion _closedRotation;
         private Quaternion _openRotation;
@@ -46,7 +46,8 @@ namespace Electric_appliances.Energy_consumers
 
         protected override void DoWithParentOnEnable()
         {
-            return;
+            if (_buttonLink.Button != null)
+                _buttonClickReader.ButtonClicked += OnButtonClick;
         }
 
         protected override void DoWithParentOnDisable()

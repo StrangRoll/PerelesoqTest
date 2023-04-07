@@ -1,5 +1,6 @@
 using System;
 using Electric_appliances.Energy_consumers;
+using ScriptableObjects.CameraChangerView;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,34 +8,35 @@ namespace UI
 {
     public class CamerasControl : MonoBehaviour
     {
-        [SerializeField] private ButtonClickReader firstCameraPlace;
-        [SerializeField] private ButtonClickReader secondCameraPlace;
+        [SerializeField] private CameraChangerViewLinker _linker;
         [SerializeField] private ConnectableСamera[] _connectableСameras;
+        
+        private CameraChangerView _cameraChangerView;
 
         private void OnEnable()
         {
-            firstCameraPlace.ButtonClicked += OnFirstCameraClicked;
-            secondCameraPlace.ButtonClicked += OnSecondCameraClicked;
+            if (_linker.CameraChangerView != null)
+                _cameraChangerView.CameraChanged += OnCameraChanged;
+            
+            ActivateOneCamera(0);
+        }
+
+        private void Start()
+        {
+            _cameraChangerView = _linker.CameraChangerView;
+            _cameraChangerView.CameraChanged += OnCameraChanged;
         }
 
         private void OnDisable()
         {
-            firstCameraPlace.ButtonClicked -= OnFirstCameraClicked;
-            secondCameraPlace.ButtonClicked -= OnSecondCameraClicked;
+            _cameraChangerView.CameraChanged += OnCameraChanged;
         }
 
-        private void OnFirstCameraClicked()
+        private void OnCameraChanged(int index)
         {
-            var cameraIndex = 0;
-            ActivateOneCamera(cameraIndex);
+            ActivateOneCamera(index);
         }
-
-        private void OnSecondCameraClicked()
-        {
-            var cameraIndex = 1;
-            ActivateOneCamera(cameraIndex);
-        }
-
+        
         private void ActivateOneCamera(int index)
         {
             for (var i = 0; i < _connectableСameras.Length; i++)

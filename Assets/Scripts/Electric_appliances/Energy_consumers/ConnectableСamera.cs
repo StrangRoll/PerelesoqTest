@@ -7,17 +7,27 @@ namespace Electric_appliances.Energy_consumers
     public class ConnectableСamera : EnergyConsumer, IElectricAppliances
     {
         [SerializeField] private Camera camera;
-        
-        public bool IsWorking => IsSourceWorking;
+
+        public bool IsWorking => IsSourceWorking && _isCameraActivate;
+
+        private bool _isCameraActivate = false;
 
         public void ActivateCamera()
         {
-            camera.enabled = true;
+            _isCameraActivate = true;
+            ChangeCameraEnabled();
         }
 
         public void DeactivateCamera()
         {
-            camera.enabled = false;
+            _isCameraActivate = false;
+            ChangeCameraEnabled();
+        }
+
+        protected override void OnSourceIsWorkingChanged()
+        {
+            camera.enabled = IsWorking;
+            ChangeCameraEnabled();
         }
 
         protected override void DoWithParentOnEnable()
@@ -30,8 +40,9 @@ namespace Electric_appliances.Energy_consumers
             return;
         }
 
-        protected override void OnSourceIsWorkingChanged()
+        private void ChangeCameraEnabled()
         {
+            camera.gameObject.SetActive(IsWorking);
             camera.enabled = IsWorking;
         }
     }

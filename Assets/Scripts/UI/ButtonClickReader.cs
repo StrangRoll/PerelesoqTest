@@ -8,14 +8,19 @@ namespace UI
     public class ButtonClickReader : MonoBehaviour
     {
         [SerializeField] private Button button;
-        [SerializeField] private ButtonObject buttonLink;
+        [SerializeField] private ButtonLinker buttonLink = null;
         
         public event UnityAction ButtonClicked;
 
+        private void Awake()
+        {
+            if (buttonLink != null)
+                buttonLink.Button = this;
+        }
+        
         private void OnEnable()
         {
             button.onClick.AddListener(ButtonClickListener);
-            buttonLink.Button = this;
         }
 
         private void OnDisable()
