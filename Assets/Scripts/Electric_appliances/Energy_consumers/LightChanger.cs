@@ -1,12 +1,19 @@
+using UnityEngine;
+
 namespace Electric_appliances.Energy_consumers
 {
     public class LightChanger : EnergyConsumer, IElectricAppliances
     {
+        [SerializeField] private Light[] lights;
+        
         public bool IsWorking => IsSourceWorking;
         
         protected override void OnSourceIsWorkingChanged()
         {
-            //activate/deactivate light
+            foreach (var light in lights)
+            {
+                light.enabled = IsWorking;
+            }
         }
     }
 }
