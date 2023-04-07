@@ -470,7 +470,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00006532285}
+  m_AnchoredPosition: {x: 0, y: 0.0000222993}
   m_SizeDelta: {x: 0, y: 886.3367}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &481993302
@@ -1801,6 +1801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 575699827980857537}
+  buttonLink: {fileID: 11400000, guid: d54218dbfdbfccf45acffb77f0312153, type: 2}
 --- !u!1001 &980074812457944098
 PrefabInstance:
   m_ObjectHideFlags: 0

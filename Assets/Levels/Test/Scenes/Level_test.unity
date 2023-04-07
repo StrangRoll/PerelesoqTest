@@ -542,6 +542,10 @@ PrefabInstance:
       propertyPath: energySource
       value: 
       objectReference: {fileID: 1031346328}
+    - target: {fileID: 5133030871492748307, guid: 030463e6a3620f743b4911b71f78bdf6, type: 3}
+      propertyPath: _currentConsumerPerHour
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5488502559412146252, guid: 030463e6a3620f743b4911b71f78bdf6, type: 3}
       propertyPath: m_Name
       value: Lamp.1
@@ -3592,7 +3596,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-199462
+  m_Name: pb_Mesh-232284
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7251,7 +7255,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-200128
+  m_Name: pb_Mesh-232948
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7814,7 +7818,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-200140
+  m_Name: pb_Mesh-232960
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10305,7 +10309,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-199474
+  m_Name: pb_Mesh-232296
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13087,6 +13091,10 @@ PrefabInstance:
       propertyPath: energySource
       value: 
       objectReference: {fileID: 971734269}
+    - target: {fileID: 5133030871492748307, guid: 030463e6a3620f743b4911b71f78bdf6, type: 3}
+      propertyPath: _currentConsumerPerHour
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5488502559412146252, guid: 030463e6a3620f743b4911b71f78bdf6, type: 3}
       propertyPath: m_Name
       value: Lamp 2
@@ -14719,9 +14727,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 941208521752862111}
     - target: {fileID: 7794300723564438400, guid: 91085d37a3c4da6429677fa7b49dac73, type: 3}
+      propertyPath: _buttonLink
+      value: 
+      objectReference: {fileID: 11400000, guid: d54218dbfdbfccf45acffb77f0312153, type: 2}
+    - target: {fileID: 7794300723564438400, guid: 91085d37a3c4da6429677fa7b49dac73, type: 3}
       propertyPath: energySource
       value: 
       objectReference: {fileID: 2075846753}
+    - target: {fileID: 7794300723564438400, guid: 91085d37a3c4da6429677fa7b49dac73, type: 3}
+      propertyPath: _currentConsumerPerAction
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7870429339412488838, guid: 91085d37a3c4da6429677fa7b49dac73, type: 3}
       propertyPath: m_RootOrder
       value: 1
