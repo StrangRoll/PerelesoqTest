@@ -1,6 +1,7 @@
 using System.Collections;
 using AYellowpaper;
 using Electric_appliances.Interfaces;
+using ScriptableObjects.TMP_TextLinker;
 using TMPro;
 using UnityEngine;
 
@@ -10,12 +11,14 @@ namespace Electric_appliances
     {
         [RequireInterface(typeof(ICurrentConsumer))]
         [SerializeField] private GameObject[] currentConsumers;
-        [SerializeField] private TMP_Text consumeCountText;
-        [SerializeField] private TMP_Text consumePerSecondCountText;
+        [SerializeField] private TMP_TextLinker consumeCountLinker;
+        [SerializeField] private TMP_TextLinker consumePerSecondCountLinker;
 
         private float _consumeCount = 0;
         private float _previousConsumeCount = 0;
         private WaitForSeconds _waitOneSecond;
+        private TMP_Text consumeCountText;
+        private TMP_Text consumePerSecondCountText;
 
         private void OnEnable()
         {
@@ -28,6 +31,8 @@ namespace Electric_appliances
 
         private void Start()
         {
+            consumeCountText = consumeCountLinker.TextField;
+            consumePerSecondCountText = consumePerSecondCountLinker.TextField;
             _waitOneSecond = new WaitForSeconds(1);
             StartCoroutine(CountConsumePerSecond());
         }
@@ -50,8 +55,11 @@ namespace Electric_appliances
         {
             while (true)
             {
-                consumePerSecondCountText.text = $"{_consumeCount - _previousConsumeCount}W";
-                consumeCountText.text = $"{_consumeCount}W";
+                var currentValue = (_consumeCount - _previousConsumeCount).ToString("F3");
+                var totalValue = (_consumeCount).ToString("F3");
+                
+                consumePerSecondCountText.text = $"CURRENT: {currentValue}W";
+                consumeCountText.text = $"TOTAL: {totalValue}W";
                 _previousConsumeCount = _consumeCount;
                 yield return _waitOneSecond;
             }

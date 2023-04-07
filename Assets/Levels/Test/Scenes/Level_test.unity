@@ -11945,7 +11945,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069886428}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18bfca8cc450481fae733e0546e633ae, type: 3}
   m_Name: 
@@ -11954,8 +11954,8 @@ MonoBehaviour:
   - {fileID: 1330611622}
   - {fileID: 496500653}
   - {fileID: 535132894}
-  consumeCountText: {fileID: 0}
-  consumePerSecondCountText: {fileID: 0}
+  consumeCountLinker: {fileID: 11400000, guid: cd301a4ec4cc3e74bb7984bb3a518e1d, type: 2}
+  consumePerSecondCountLinker: {fileID: 11400000, guid: b2f48f687fa17b64eb338ab386db4a6c, type: 2}
 --- !u!1001 &2075846751
 PrefabInstance:
   m_ObjectHideFlags: 0
