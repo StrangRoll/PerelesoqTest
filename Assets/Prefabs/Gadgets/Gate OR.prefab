@@ -99,6 +99,10 @@ PrefabInstance:
       propertyPath: m_text
       value: OR
       objectReference: {fileID: 0}
+    - target: {fileID: 7754227459309464619, guid: 246750ba87993bc448275a44e289674c, type: 3}
+      propertyPath: formula
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8708960200585796865, guid: 246750ba87993bc448275a44e289674c, type: 3}
       propertyPath: m_Mesh
       value: 

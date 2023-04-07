@@ -1,3 +1,5 @@
+using Electric_appliances.Interfaces;
+
 namespace Electric_appliances.Energy_sources.Energy_demanding_sources
 {
     public class EnergyConductor : EnergyDemandingSources, IElectricAppliances

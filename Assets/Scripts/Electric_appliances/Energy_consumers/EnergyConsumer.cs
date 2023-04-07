@@ -13,12 +13,18 @@ namespace Electric_appliances.Energy_consumers
         private void OnEnable()
         {
             energySource.IsWorkingChanged += OnSourceIsWorkingChanged;
+            DoWithParentOnEnable();
         }
 
         private void OnDisable()
         {
             energySource.IsWorkingChanged -= OnSourceIsWorkingChanged;
+            DoWithParentOnDisable();
         }
+
+        protected abstract void DoWithParentOnEnable();
+        
+        protected abstract void DoWithParentOnDisable();
         
         protected abstract void OnSourceIsWorkingChanged();
 
