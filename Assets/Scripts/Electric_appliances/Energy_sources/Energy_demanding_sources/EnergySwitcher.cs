@@ -1,3 +1,5 @@
+using Electric_appliances.Interfaces;
+
 namespace Electric_appliances.Energy_sources.Energy_demanding_sources
 {
     public class EnergySwitcher : EnergyDemandingSources, IElectricAppliances
@@ -8,12 +10,12 @@ namespace Electric_appliances.Energy_sources.Energy_demanding_sources
         
         protected override void DoWithParentOnEnable()
         {
-            throw new System.NotImplementedException();
+            return;
         }
 
         protected override void DoWithParentOnDisable()
         {
-            throw new System.NotImplementedException();
+            return;
         }
 
         protected override void SourceIsWorkingChanged()

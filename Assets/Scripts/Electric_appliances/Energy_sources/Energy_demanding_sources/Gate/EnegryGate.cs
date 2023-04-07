@@ -1,3 +1,4 @@
+using Electric_appliances.Interfaces;
 using UnityEngine;
 
 namespace Electric_appliances.Energy_sources.Energy_demanding_sources.Gate

@@ -1,13 +1,18 @@
 using System.Collections;
+using Electric_appliances.Interfaces;
+using UI;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Electric_appliances.Energy_consumers
 {
-    public class DoorDrive : EnergyConsumer, IElectricAppliances
+    public class DoorDrive : EnergyConsumer, IElectricAppliances, ICurrentConsumer
     {
         [SerializeField] private float animateTime;
         [SerializeField] private float openAngle ;
         [SerializeField] private Transform door;
+        [SerializeField] private ButtonClickReader _buttonClickReader;
+        [SerializeField] private float _currentConsumerPerAction;
 
         private Quaternion _closedRotation;
         private Quaternion _openRotation;
@@ -16,6 +21,9 @@ namespace Electric_appliances.Energy_consumers
         private float _speed;
 
         public bool IsWorking => IsSourceWorking && (_doorOpeningAnimation != null);
+        public float CurrentConsumer => _currentConsumerPerAction;
+        
+        public event UnityAction<float> ConsumeCurrent;
 
         private void Awake()
         {
@@ -23,7 +31,17 @@ namespace Electric_appliances.Energy_consumers
             _openRotation = Quaternion.Euler(0, openAngle, 0) * _closedRotation;
             _speed = openAngle / animateTime;
         }
-        
+
+        protected override void DoWithParentOnEnable()
+        {
+            _buttonClickReader.ButtonClicked += OnButtonClick;
+        }
+
+        protected override void DoWithParentOnDisable()
+        {
+            _buttonClickReader.ButtonClicked -= OnButtonClick;
+        }
+
         protected override void OnSourceIsWorkingChanged()
         {
             if (_doorOpeningAnimation == null)
@@ -31,16 +49,30 @@ namespace Electric_appliances.Energy_consumers
             
             if (IsSourceWorking)
             {
-                var endRotation = _isOpen ? _closedRotation : _openRotation;
-                var isOpening = !_isOpen;
-
-                _doorOpeningAnimation = StartCoroutine(AnimateDoor(
-                    door.localRotation, endRotation, isOpening));
+                StartAnimation();
             }
             else
             {
                 StopCoroutine(_doorOpeningAnimation);
             }
+        }
+
+        private void OnButtonClick()
+        {
+            if (_doorOpeningAnimation != null)
+                return;
+            
+            ConsumeCurrent?.Invoke(CurrentConsumer);
+            StartAnimation();
+        }
+
+        private void StartAnimation()
+        {
+            var endRotation = _isOpen ? _closedRotation : _openRotation;
+            var isOpening = !_isOpen;
+
+            _doorOpeningAnimation = StartCoroutine(AnimateDoor(
+                door.localRotation, endRotation, isOpening));
         }
 
         private IEnumerator AnimateDoor(Quaternion startRotation, Quaternion endRotation, bool isOpening)

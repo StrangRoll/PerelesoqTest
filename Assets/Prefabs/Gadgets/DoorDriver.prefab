@@ -220,7 +220,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energySource: {fileID: 0}
-  animateTime: 30
+  animateTime: 5
+  openAngle: 90
+  door: {fileID: 0}
+  _buttonClickReader: {fileID: 0}
 --- !u!1 &4218355069146211326
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace Electric_appliances
+namespace Electric_appliances.Interfaces
 {
     public interface IElectricAppliances
     {
