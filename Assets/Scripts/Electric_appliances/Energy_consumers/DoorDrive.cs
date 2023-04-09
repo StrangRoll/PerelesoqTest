@@ -2,6 +2,7 @@ using System.Collections;
 using Electric_appliances.Interfaces;
 using ScriptableObjects;
 using UI;
+using UI.ClickReaders;
 using UnityEngine;
 using UnityEngine.Events;
 

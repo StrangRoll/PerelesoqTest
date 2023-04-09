@@ -1,4 +1,5 @@
 using UI;
+using UI.ClickReaders;
 using UnityEngine;
 
 namespace ScriptableObjects

@@ -1,6 +1,7 @@
 using System;
 using ScriptableObjects.CameraChangerView;
 using TMPro;
+using UI.ClickReaders;
 using UnityEngine;
 using UnityEngine.Events;
 

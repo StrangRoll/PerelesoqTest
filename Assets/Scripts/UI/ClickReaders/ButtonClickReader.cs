@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace UI
+namespace UI.ClickReaders
 {
     public class ButtonClickReader : MonoBehaviour
     {
