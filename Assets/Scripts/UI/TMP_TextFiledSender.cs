@@ -1,4 +1,3 @@
-using System;
 using ScriptableObjects.TMP_TextLinker;
 using TMPro;
 using UnityEngine;
