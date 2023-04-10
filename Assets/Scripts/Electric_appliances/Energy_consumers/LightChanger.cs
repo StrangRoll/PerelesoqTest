@@ -29,7 +29,8 @@ namespace Electric_appliances.Energy_consumers
 
         private void Update()
         {
-            ConsumeCurrent?.Invoke(CurrentConsumer);
+            if (IsWorking)
+                ConsumeCurrent?.Invoke(CurrentConsumer);
         }
 
 
