@@ -25,7 +25,7 @@ namespace Electric_appliances.Energy_consumers
         
         private float _speed;
         
-        public bool IsWorking => IsSourceWorking && (_doorOpeningAnimation != null);
+        public bool IsWorking => IsSourceWorking && (_doorOpeningAnimation == null);
         public float CurrentConsumer => _currentConsumerPerAction;
         
         public event UnityAction<float> ConsumeCurrent;
@@ -73,7 +73,7 @@ namespace Electric_appliances.Energy_consumers
 
         private void OnButtonClick()
         {
-            if (_doorOpeningAnimation != null)
+            if (IsWorking == false)
                 return;
             
             ConsumeCurrent?.Invoke(CurrentConsumer);
