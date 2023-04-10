@@ -1,12 +1,15 @@
 using Electric_appliances.Interfaces;
+using ScriptableObjects.LightLinkers;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Electric_appliances.Energy_consumers
 {
     public class LightChanger : EnergyConsumer, IElectricAppliances, ICurrentConsumer
     {
         [SerializeField] private Light[] lights;
+        [SerializeField] private LightsLinker lightsLinker;
         [SerializeField] private float _currentConsumerPerHour;
 
         private float _secondsInHour = 3600;
@@ -20,6 +23,12 @@ namespace Electric_appliances.Energy_consumers
         protected override void DoWithParentOnEnable()
         {
             return;
+        }
+
+        private void Start()
+        {
+            if (lightsLinker != null)
+                lights = lightsLinker.Lights;
         }
 
         protected override void DoWithParentOnDisable()
