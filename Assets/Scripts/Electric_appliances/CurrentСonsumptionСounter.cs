@@ -41,6 +41,9 @@ namespace Electric_appliances
         {
             foreach (var currentConsumer in currentConsumers)
             {
+                if (currentConsumer == null)
+                    return;
+                
                 if (currentConsumer.TryGetComponent<ICurrentConsumer>(out var consumer))
                     consumer.ConsumeCurrent += OnConsumeCurrent;
             }
